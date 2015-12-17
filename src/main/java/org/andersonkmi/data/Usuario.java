@@ -1,8 +1,11 @@
 package org.andersonkmi.data;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
-public class Usuario {
+public class Usuario implements Serializable {
+	private static final long serialVersionUID = -1261913229135272838L;
+
 	private Integer id;
 	private String login;
 	private String password;
