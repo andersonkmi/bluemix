@@ -32,4 +32,8 @@ public class TranslationService {
 	public void registerTranslationRequest(TranslationRequest request) {
 		requestDAO.insert(request);
 	}
+	
+	public List<TranslationRequest> findAll() {
+		return requestDAO.findAll();
+	}
 }

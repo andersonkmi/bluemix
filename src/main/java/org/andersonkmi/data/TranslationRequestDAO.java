@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class TranslationRequestDAO extends BaseDAO {
@@ -22,7 +23,7 @@ public class TranslationRequestDAO extends BaseDAO {
 			insertStatement.setInt(1, request.getUserId());
 			insertStatement.setString(2, request.getOriginalText());
 			insertStatement.setString(3,  request.getTranslatedText());
-			insertStatement.setTimestamp(4, new Timestamp(request.getRequestTimestamp().getTimeInMillis()));
+			insertStatement.setTimestamp(4, new Timestamp(request.getRequestTimestamp().getTime()));
 			insertStatement.executeUpdate();
 		} catch (SQLException exception) {
 			StringBuffer buffer = new StringBuffer();
@@ -51,7 +52,12 @@ public class TranslationRequestDAO extends BaseDAO {
 				request.setUserId(rs.getInt("USER_ID"));
 				request.setOriginalText(rs.getString("ORIGINAL_TEXT"));
 				request.setTranslatedText(rs.getString("TRANSLATED_TEXT"));
-				
+				Timestamp requestTimestamp = rs.getTimestamp("REQ_TIMESTAMP");
+				if(requestTimestamp != null) {
+					Calendar ts = Calendar.getInstance();
+					ts.setTimeInMillis(requestTimestamp.getTime());
+					request.setRequestTimestamp(ts);					
+				}
 				results.add(request);
 			}
 		} catch (SQLException exception) {

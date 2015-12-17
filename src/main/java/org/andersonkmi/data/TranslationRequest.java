@@ -1,8 +1,12 @@
 package org.andersonkmi.data;
 
+import java.io.Serializable;
 import java.util.Calendar;
+import java.util.Date;
 
-public class TranslationRequest {
+public class TranslationRequest implements Serializable {
+	private static final long serialVersionUID = 4682411217460298972L;
+
 	private Integer id;
 	private Integer userId;
 	private String originalText;
@@ -45,7 +49,7 @@ public class TranslationRequest {
 		requestTimestamp = timestamp;
 	}
 	
-	public Calendar getRequestTimestamp() {
-		return requestTimestamp;
+	public Date getRequestTimestamp() {
+		return requestTimestamp.getTime();
 	}
 }
