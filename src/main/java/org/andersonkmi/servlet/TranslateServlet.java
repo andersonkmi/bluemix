@@ -17,9 +17,7 @@ public class TranslateServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
-		if("show".equals(action)) {
-
-		} else if("showResults".equals(action)) {
+		if("showResults".equals(action)) {
 			
 		}
 		request.getRequestDispatcher("/WEB-INF/translate.jsp").forward(request, response);
