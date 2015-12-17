@@ -47,7 +47,7 @@ public class TranslateServlet extends HttpServlet {
 		for(String word : words) {
 			buffer.append(word).append(" ");
 		}
-		return buffer.toString();
+		return buffer.toString().trim();
 	}
 	
 	private void registerTranslationRequest(String originalText, String translatedText, Integer userId) {
