@@ -27,6 +27,10 @@ public class TranslationService {
 			translatedWords.add(translation.getTranslation());
 		}
 		return translatedWords;
+	} 
+	
+	public TranslationRequest findByUserIdText(Integer userId, String text) {
+		return requestDAO.findByUserAndText(userId, text);
 	}
 	
 	public void registerTranslationRequest(TranslationRequest request) {

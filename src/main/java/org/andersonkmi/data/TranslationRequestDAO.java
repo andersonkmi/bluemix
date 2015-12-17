@@ -1,5 +1,7 @@
 package org.andersonkmi.data;
 
+import static java.util.Calendar.MINUTE;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -72,5 +74,43 @@ public class TranslationRequestDAO extends BaseDAO {
 			} catch (SQLException exception) {}
 		}
 		return results;
+	}
+	
+	public TranslationRequest findByUserAndText(Integer id, String text) {
+		TranslationRequest request = null;
+		String statement = "SELECT ID, USER_ID, ORIGINAL_TEXT, TRANSLATED_TEXT, REQ_TIMESTAMP FROM TRANSLATION_REQUESTS WHERE USER_ID = ? AND ORIGINAL_TEXT = ? AND REQ_TIMESTAMP BETWEEN ? AND ? ORDER BY REQ_TIMESTAMP DESC FETCH FIRST 1 ROWS ONLY";
+		Connection connection = null;
+		try {
+			connection = getConnection();
+			PreparedStatement query = connection.prepareStatement(statement);
+			query.setInt(1, id);
+			query.setString(2,  text);
+			
+			Calendar startTime = Calendar.getInstance();
+			startTime.add(MINUTE, -10);			
+			Calendar now = Calendar.getInstance();
+			
+			query.setTimestamp(3,  new Timestamp(startTime.getTimeInMillis()));
+			query.setTimestamp(4, new Timestamp(now.getTimeInMillis()));
+			
+			ResultSet rs = query.executeQuery();
+			while(rs.next()) {
+				request = new TranslationRequest();
+				request.setId(rs.getInt("ID"));
+				request.setOriginalText(rs.getString("ORIGINAL_TEXT"));
+				request.setTranslatedText(rs.getString("TRANSLATED_TEXT"));
+			}
+		} catch (SQLException exception) {
+			StringBuffer buffer = new StringBuffer();
+			buffer.append("An error has occurred when retrieving a translation requests.");
+			System.err.println(buffer.toString() + " - " + exception.getMessage());
+		} finally {
+			try {
+				if(connection != null) {
+					connection.close();
+				}
+			} catch (SQLException exception) {}
+		}
+		return request;
 	}
 }

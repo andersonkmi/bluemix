@@ -28,8 +28,11 @@ public class TranslateServlet extends HttpServlet {
 		String action = request.getParameter("action");
 		if("showResults".equals(action)) {
 			String originalText = request.getParameter("originalText");
-			String translatedText = performTranslation(originalText);
-			registerTranslationRequest(originalText, translatedText, (Integer) request.getSession(false).getAttribute("id")); 
+			String translatedText = retrieveSavedTranslation((Integer) request.getSession(false).getAttribute("id"), originalText);
+			if(translatedText == null) {
+				translatedText = performTranslation(originalText);
+				registerTranslationRequest(originalText, translatedText, (Integer) request.getSession(false).getAttribute("id")); 				
+			}
 			request.setAttribute("translatedText", translatedText);		
 			request.setAttribute("originalText", originalText);
 		}
@@ -38,6 +41,15 @@ public class TranslateServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
+	}
+	
+	private String retrieveSavedTranslation(Integer userId, String text) {
+		TranslationService service = new TranslationService();
+		TranslationRequest item = service.findByUserIdText(userId, text);
+		if(item != null) {
+			return item.getTranslatedText();
+		}
+		return null;
 	}
 
 	private String performTranslation(String originalText) {
