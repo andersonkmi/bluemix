@@ -56,7 +56,7 @@
 			</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				<h2 class="page-header">Watson Language Translation Service:</h2>
-				<form action="translation.action?action=showResults" method="post">				
+				<form action="translate.action?action=showResults" method="post">				
 				<textarea rows="5" cols="40" name="originalText" id="originalText" placeholder="Enter your text in portuguese here">${fromText }</textarea>
 				<textarea rows="5" cols="40"  name="translatedText" id="translatedText" placeholder="The English translated text will be displayed here" readonly="readonly">${translatedText }</textarea>
 				<br>

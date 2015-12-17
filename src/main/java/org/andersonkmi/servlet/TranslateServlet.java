@@ -30,7 +30,8 @@ public class TranslateServlet extends HttpServlet {
 			String originalText = request.getParameter("originalText");
 			String translatedText = performTranslation(originalText);
 			registerTranslationRequest(originalText, translatedText, (Integer) request.getSession(false).getAttribute("id")); 
-			request.setAttribute("translatedText", translatedText);			
+			request.setAttribute("translatedText", translatedText);		
+			request.setAttribute("originalText", originalText);
 		}
 		request.getRequestDispatcher("/WEB-INF/translate.jsp").forward(request, response);
 	}
