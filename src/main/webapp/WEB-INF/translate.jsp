@@ -52,12 +52,13 @@
 					<li><a href="#">Start here <span class="sr-only">(current)</span></a></li>
 					<li><a href="showSettings.action?id=${id }">Settings</a></li>
 					<li class="active"><a href="translate.action?action=show">Translation</a>
+					<li><a href="showTranslations.action">View translations</a>
 				</ul>
 			</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				<h2 class="page-header">Watson Language Translation Service:</h2>
 				<form action="translate.action?action=showResults" method="post">				
-				<textarea rows="5" cols="40" name="originalText" id="originalText" placeholder="Enter your text in portuguese here">${fromText }</textarea>
+				<textarea rows="5" cols="40" name="originalText" id="originalText" placeholder="Enter your text in portuguese here">${originalText }</textarea>
 				<textarea rows="5" cols="40"  name="translatedText" id="translatedText" placeholder="The English translated text will be displayed here" readonly="readonly">${translatedText }</textarea>
 				<br>
 				<button type="submit" class="btn btn-success">Translate</button>

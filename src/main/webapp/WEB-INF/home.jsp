@@ -53,6 +53,7 @@
 							class="sr-only">(current)</span></a></li>
 					<li><a href="showSettings.action?id=${id}">Settings</a></li>
 					<li><a href="translate.action?action=show">Translation</a>
+					<li><a href="showTranslations.action">View translations</a>
 				</ul>
 			</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
