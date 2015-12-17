@@ -51,14 +51,14 @@
 				<ul class="nav nav-sidebar">
 					<li><a href="#">Start here <span class="sr-only">(current)</span></a></li>
 					<li><a href="showSettings.action?id=${id }">Settings</a></li>
-					<li class="active"><a href="translate.action?action=show">Translate</a>
+					<li class="active"><a href="translate.action?action=show">Translation</a>
 				</ul>
 			</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-				<h2 class="page-header">Translation:</h2>
+				<h2 class="page-header">Watson Language Translation Service:</h2>
 				<form>
 				<textarea rows="5" cols="40" name="fromText" id="fromText" placeholder="Enter your text here">${fromText }</textarea>
-				<textarea rows="5" cols="40"  name="translatedText" id="translatedText" readonly="readonly">${translatedText }</textarea>
+				<textarea rows="5" cols="40"  name="translatedText" id="translatedText" placeholder="Translated text will be displayed here" readonly="readonly">${translatedText }</textarea>
 				<br>
 				<button type="submit" class="btn btn-success">Translate</button>
 				</form>
