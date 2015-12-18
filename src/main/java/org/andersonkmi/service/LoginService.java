@@ -11,7 +11,6 @@ public class LoginService {
 	}
 	
 	public void login(String user, String password) throws InvalidLoginOrPasswordException {
-		System.out.println("Validando senha para usuario/senha: " + user + "/" + password);
 		String vcapServices = System.getenv("VCAP_SERVICES");
 		if(vcapServices != null) {
 			productionLogin(user, password);
@@ -31,7 +30,6 @@ public class LoginService {
 		
 		if(usuario != null) {
 			System.out.println("Usuario encontrado na base");
-			System.out.println("TRACE: password = '" + usuario.getPassword() + "'");
 			if(!isPasswordValid(password, usuario.getPassword())) {
 				System.err.println("Senha invalida");
 				throw new InvalidLoginOrPasswordException("Invalid login or password");
