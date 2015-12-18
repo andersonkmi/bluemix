@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
 <meta charset="utf-8">
@@ -54,34 +52,28 @@
 					<li><a href="#">Start here <span class="sr-only">(current)</span></a></li>
 					<li><a href="showSettings.action?id=${id }">Settings</a></li>
 					<li><a href="translate.action?action=show">Translation</a>
-					<li class="active"><a href="showTranslations.action">View translations</a>
-					<li><a href="upload.action">Document conversion</a>
+					<li><a href="showTranslations.action">View translations</a>
+					<li class="active"><a href="upload.action">Document conversion</a>
 				</ul>
 			</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-				<h2 class="page-header">Translations performed:</h2>
-				<div class="table-responsive">
-					<table class="table table-striped">
-						<thead>
-							<tr>
-								<th>#</th>
-								<th>Original text</th>
-								<th>Translated text</th>
-								<th>Timestamp</th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach var="request" items="${translationRequests }">
-								<tr>
-									<td>${request.id }</td>
-									<td>${request.originalText }</td>
-									<td>${request.translatedText }</td>									
-									<td><fmt:formatDate type="both" dateStyle="medium" timeStyle="medium" value="${request.requestTimestamp}" /></td>
-								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
-				</div>
+				<h2 class="page-header">Watson Document Conversion Service:</h2>
+				<form action="upload.action?action=convert" method="post" enctype="multipart/form-data">	
+				<p>File to be converted:</p>  
+				<input type="file" name="file" />
+				<br>
+				<p>Choose format:</p>
+				<select name="conversionFormat">
+					<option value="html">HTML</option>
+					<option value="plain">Plain text</option>
+					<option value="json">Answer units</option>
+				</select>
+				<br>
+				<br>			
+				<textarea rows="15" cols="100"  name="convertedText" id="convertedText" placeholder="The converted file will be displayed here" readonly="readonly" style="overflow:scroll">${translatedText }</textarea>				
+				<br>
+				<button type="submit" class="btn btn-success">Upload and convert</button>
+				</form>
 			</div>
 		</div>
 	</div>
