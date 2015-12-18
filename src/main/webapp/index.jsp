@@ -79,7 +79,7 @@
 				<h2>IBM Bluemix</h2>
 				<p>Create, deploy and manager. Your applications in the cloud.</p>
 				<p>
-					<a class="btn btn-default" href="#" role="button">View details
+					<a class="btn btn-default" href="http://www.ibm.com/Bluemix" role="button">View details
 						&raquo;</a>
 				</p>
 			</div>
@@ -87,7 +87,7 @@
 				<h2>Build and run apps</h2>
 				<p>Use powerful, open-source technologies to power your apps. Let Bluemix handle the rest.</p>
 				<p>
-					<a class="btn btn-default" href="#" role="button">View details
+					<a class="btn btn-default" href="https://www.ng.bluemix.net/docs/" role="button">View details
 						&raquo;</a>
 				</p>
 			</div>
@@ -95,7 +95,7 @@
 				<h2>Use Services & APIs</h2>
 				<p>Choose IBM, third-party, and community services to extend the functionality of your apps.</p>
 				<p>
-					<a class="btn btn-default" href="#" role="button">View details
+					<a class="btn btn-default" href="https://console.ng.bluemix.net/catalog/#services" role="button">View details
 						&raquo;</a>
 				</p>
 			</div>
