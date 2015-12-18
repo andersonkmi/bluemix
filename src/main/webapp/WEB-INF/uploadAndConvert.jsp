@@ -70,7 +70,7 @@
 				</select>
 				<br>
 				<br>			
-				<textarea rows="15" cols="100"  name="convertedText" id="convertedText" placeholder="The converted file will be displayed here" readonly="readonly" style="overflow:scroll">${translatedText }</textarea>				
+				<textarea rows="15" cols="100"  name="convertedText" id="convertedText" placeholder="The converted file will be displayed here" readonly="readonly" style="overflow:scroll">${convertedText }</textarea>				
 				<br>
 				<button type="submit" class="btn btn-success">Upload and convert</button>
 				</form>
