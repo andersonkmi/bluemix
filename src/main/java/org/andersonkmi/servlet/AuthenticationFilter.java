@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter(urlPatterns = {"/showSettings.action", "/translate.action", "/showTranslations.action", "/upload.action"})
+@WebFilter(urlPatterns = {"/showSettings.action", "/translate.action", "/showTranslations.action", "/upload.action", "/home.action"})
 public class AuthenticationFilter implements Filter {
 
     public AuthenticationFilter() {

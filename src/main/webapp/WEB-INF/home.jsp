@@ -49,7 +49,7 @@
 		<div class="row">
 			<div class="col-sm-3 col-md-2 sidebar">
 				<ul class="nav nav-sidebar">
-					<li class="active"><a href="#">Start here <span
+					<li class="active"><a href="home.action">Start here <span
 							class="sr-only">(current)</span></a></li>
 					<li><a href="showSettings.action?id=${id}">Settings</a></li>
 					<li><a href="translate.action?action=show">Translation</a>
