@@ -1,6 +1,6 @@
 package org.andersonkmi.service;
 
-public class WatsonServiceCredential {
+public class WatsonServiceCredentials {
 	private String userName;
 	private String password;
 	private String url;
