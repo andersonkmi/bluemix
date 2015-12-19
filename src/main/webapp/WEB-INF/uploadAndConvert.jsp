@@ -60,7 +60,7 @@
 				<h2 class="page-header">Watson Document Conversion Service:</h2>
 				<form action="upload.action?action=convert" method="post" enctype="multipart/form-data">	
 				<p>File to be converted:</p>  
-				<input type="file" name="file" />
+				<input type="file" name="file"  accept=".pdf,.docx,.html"/>
 				<br>
 				<p>Choose format:</p>
 				<select name="conversionFormat">

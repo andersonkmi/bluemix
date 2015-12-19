@@ -63,8 +63,8 @@
 	<div class="jumbotron">
 		<div class="container">
 			<h1>Anderson Ito Java Bluemix project!</h1>
-			<p>This is a simple project developed to test the capabilities of the IBM Bluemix platform. 
-			This application is very simple and uses some of the services provided by such platform.</p>
+			<p>This is a simple project developed to test some of the capabilities of the IBM Bluemix platform and
+			may be used in the future for real-life projects.</p>
 			<p>
 				<a class="btn btn-primary btn-lg" href="http://www.ibm.com/Bluemix" role="button">Learn
 					more &raquo;</a>
