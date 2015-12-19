@@ -38,6 +38,10 @@ public class TranslationService extends WatsonService {
 		return requestDAO.findByUserAndText(userId, text);
 	}
 	
+	public List<TranslationRequest> findByUserId(Integer id) {
+		return requestDAO.findByUserId(id);
+	}
+	
 	public void registerTranslationRequest(TranslationRequest request) {
 		requestDAO.insert(request);
 	}

@@ -22,7 +22,7 @@ public class TranslationRequestLogServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		TranslationService service = new TranslationService();
-		List<TranslationRequest> items = service.findAll();
+		List<TranslationRequest> items = service.findByUserId((Integer) request.getSession(false).getAttribute("id"));
 		request.setAttribute("translationRequests", items);
 		request.getRequestDispatcher("/WEB-INF/showTranslations.jsp").forward(request, response);
 	}

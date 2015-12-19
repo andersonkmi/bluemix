@@ -76,6 +76,44 @@ public class TranslationRequestDAO extends BaseDAO {
 		return results;
 	}
 	
+	public List<TranslationRequest> findByUserId(Integer id) {
+		List<TranslationRequest> results = new ArrayList<>();
+		String statement = "SELECT ID, USER_ID, ORIGINAL_TEXT, TRANSLATED_TEXT, REQ_TIMESTAMP FROM TRANSLATION_REQUESTS WHERE USER_ID = ?";
+		Connection connection = null;
+		try {
+			connection = getConnection();
+			PreparedStatement query = connection.prepareStatement(statement);
+			query.setInt(1, id);
+			ResultSet rs = query.executeQuery();
+			while(rs.next()) {
+				TranslationRequest request = new TranslationRequest();
+				request.setId(rs.getInt("ID"));
+				request.setUserId(rs.getInt("USER_ID"));
+				request.setOriginalText(rs.getString("ORIGINAL_TEXT"));
+				request.setTranslatedText(rs.getString("TRANSLATED_TEXT"));
+				Timestamp requestTimestamp = rs.getTimestamp("REQ_TIMESTAMP");
+				if(requestTimestamp != null) {
+					Calendar ts = Calendar.getInstance();
+					ts.setTimeInMillis(requestTimestamp.getTime());
+					request.setRequestTimestamp(ts);					
+				}
+				results.add(request);
+			}
+		} catch (SQLException exception) {
+			StringBuffer buffer = new StringBuffer();
+			buffer.append("An error has occurred when retrieving all requests for user id = '").append(id).append("'");
+			System.err.println(buffer.toString() + " - " + exception.getMessage());			
+		} finally {
+			try {
+				if(connection != null) {
+					connection.close();
+				}
+			} catch (SQLException exception) {}
+		}
+		return results;
+		
+	}
+	
 	public TranslationRequest findByUserAndText(Integer id, String text) {
 		TranslationRequest request = null;
 		String statement = "SELECT ID, USER_ID, ORIGINAL_TEXT, TRANSLATED_TEXT, REQ_TIMESTAMP FROM TRANSLATION_REQUESTS WHERE USER_ID = ? AND ORIGINAL_TEXT = ? AND REQ_TIMESTAMP BETWEEN ? AND ? ORDER BY REQ_TIMESTAMP DESC FETCH FIRST 1 ROWS ONLY";
